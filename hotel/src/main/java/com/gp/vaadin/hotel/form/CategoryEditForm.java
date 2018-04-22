@@ -6,6 +6,7 @@ import com.gp.vaadin.hotel.service.CategoryService;
 import com.gp.vaadin.hotel.view.CategoryView;
 import com.vaadin.data.Binder;
 import com.vaadin.data.ValidationException;
+import com.vaadin.server.Sizeable.Unit;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -31,6 +32,11 @@ public class CategoryEditForm extends FormLayout {
 		
 		HorizontalLayout buttons = new HorizontalLayout();
 		VerticalLayout content = new VerticalLayout();
+		
+		nameCategory.setWidth(100, Unit.PERCENTAGE);
+		save.setWidth(100, Unit.PERCENTAGE);
+		close.setWidth(100, Unit.PERCENTAGE);
+		buttons.setWidth(100, Unit.PERCENTAGE);
 		
 		buttons.addComponents(save, close);
 		

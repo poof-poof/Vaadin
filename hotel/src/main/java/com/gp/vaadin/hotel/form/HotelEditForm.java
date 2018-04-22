@@ -144,14 +144,13 @@ public class HotelEditForm extends FormLayout {
 				else return ValidationResult.ok();
 			}
 		};
-			
+
 		binder.forField(name).asRequired("Pleas enter a name").bind(Hotel::getName,Hotel::setName);
 		binder.forField(address).withValidator(addressValidator).asRequired("Pleas enter a address").bind(Hotel::getAddress,Hotel::setAddress);
 		binder.forField(rating).withValidator(ratingValidator).asRequired("Pleas enter a raiting").bind(Hotel::getRating,Hotel::setRating);
 		binder.forField(operatesFrom).withValidator(operatesFromValidator).asRequired("Pleas enter a date").bind(Hotel::getOperatesFrom,Hotel::setOperatesFrom);
 		binder.forField(category).asRequired("Pleas select a category")
-		//.withConverter(Category::valueOf,"dfg")
-		.withNullRepresentation(null)
+		.withNullRepresentation(CategoryService.getCategoryInstance())
 		.bind(Hotel::getCategory,Hotel::setCategory);
 		binder.forField(url).asRequired("Pleas enter a url").bind(Hotel::getUrl,Hotel::setUrl);
 		binder.forField(description).bind(Hotel::getDescription,Hotel::setDescription);

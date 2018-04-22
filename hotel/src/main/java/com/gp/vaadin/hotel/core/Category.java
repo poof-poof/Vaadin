@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Category implements Serializable, Cloneable {
-		
+	
 	private Long id;
 	
 	private String category = ""; 
@@ -28,7 +28,7 @@ public class Category implements Serializable, Cloneable {
 	public int hashCode() {
 		return super.hashCode();
 	}
-		
+	
 	public Category() {
 	}
 	

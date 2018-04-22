@@ -10,10 +10,13 @@ import java.util.HashMap;
 
 import com.gp.vaadin.hotel.core.Category;
 import com.gp.vaadin.hotel.core.HotelCategory;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 
 public class CategoryService {
 	
 	private static CategoryService instance;
+	public static Category categoryInstance;
 	private static final Logger LOGGER = Logger.getLogger(HotelService.class.getName());
 	
 	private final HashMap<Long, Category> categories = new HashMap<>();
@@ -25,6 +28,15 @@ public class CategoryService {
 			instance.ensureTestData();
 		}
 		return instance;
+	}
+	
+	public static Category getCategoryInstance() {
+		if (categoryInstance == null) {
+			categoryInstance = new Category(-1L,"No category");
+			Notification.show("ADASD", Type.TRAY_NOTIFICATION);
+		}
+		Notification.show("AAAAA", Type.TRAY_NOTIFICATION);
+		return categoryInstance;
 	}
 	
 	public synchronized List<Category> getCatigories(){
@@ -54,7 +66,8 @@ public class CategoryService {
 
 
 	public synchronized void delete(Category value) {
-		categories.remove(value.getId());
+		
+		categories.remove(value.getId());		
 	}
 	
 	public void ensureTestData() {

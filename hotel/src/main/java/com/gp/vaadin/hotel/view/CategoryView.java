@@ -8,6 +8,8 @@ import com.gp.vaadin.hotel.core.Hotel;
 import com.gp.vaadin.hotel.form.CategoryEditForm;
 import com.gp.vaadin.hotel.service.CategoryService;
 import com.vaadin.navigator.View;
+import com.vaadin.server.Sizeable.Unit;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.SelectionMode;
@@ -32,6 +34,19 @@ public class CategoryView extends VerticalLayout implements View {
 		buttons.addComponents(addCategory, editCategory, dellCategory);
 		content.addComponents(categoryGrid, form);
 		form.setVisible(false);
+		
+    	content.setWidth("100%");
+    	content.setHeight(250, Unit.PIXELS);
+    	content.setExpandRatio(categoryGrid, 0.7f);
+    	content.setExpandRatio(form, 0.3f);
+    	content.setComponentAlignment(form, Alignment.MIDDLE_CENTER);
+    	
+    	form.setWidth("80%");
+    	form.setHeight("100%");
+    	form.setVisible(false);
+    	
+    	categoryGrid.setWidth(100, Unit.PERCENTAGE);
+    	categoryGrid.setHeight(100, Unit.PERCENTAGE); 
 		
 		dellCategory.setEnabled(false);
 		editCategory.setEnabled(false);
