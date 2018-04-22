@@ -33,9 +33,7 @@ public class CategoryService {
 	public static Category getCategoryInstance() {
 		if (categoryInstance == null) {
 			categoryInstance = new Category(-1L,"No category");
-			Notification.show("ADASD", Type.TRAY_NOTIFICATION);
 		}
-		Notification.show("AAAAA", Type.TRAY_NOTIFICATION);
 		return categoryInstance;
 	}
 	
