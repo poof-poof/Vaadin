@@ -64,8 +64,9 @@ public class CategoryService {
 
 
 	public synchronized void delete(Category value) {
-		
-		categories.remove(value.getId());		
+		categories.remove(value.getId());
+        value.seId(categoryInstance.getId());
+        value.setCategory(categoryInstance.getCategory);		
 	}
 	
 	public void ensureTestData() {
