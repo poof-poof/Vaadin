@@ -132,26 +132,16 @@ public class HotelEditForm extends FormLayout {
 				else return ValidationResult.ok();
 			}
 		};
-		
-		Validator<LocalDate> operatesFromValidator = new Validator<LocalDate>() {
-			@Override
-			public ValidationResult apply(LocalDate value, ValueContext context) {
-				if (value == null)
-					return ValidationResult.error("The date is empty");
-				else if (value.toEpochDay() > LocalDate.now().toEpochDay() ||
-						value.toEpochDay() == LocalDate.now().toEpochDay())
-					return ValidationResult.error("The date is incorrect");
-				else return ValidationResult.ok();
-			}
-		};
 
 		binder.forField(name).asRequired("Pleas enter a name").bind(Hotel::getName,Hotel::setName);
 		binder.forField(address).withValidator(addressValidator).asRequired("Pleas enter a address").bind(Hotel::getAddress,Hotel::setAddress);
 		binder.forField(rating).withValidator(ratingValidator).asRequired("Pleas enter a raiting").bind(Hotel::getRating,Hotel::setRating);
-		binder.forField(operatesFrom).withValidator(operatesFromValidator).asRequired("Pleas enter a date").bind(Hotel::getOperatesFrom,Hotel::setOperatesFrom);
-		binder.forField(category).asRequired("Pleas select a category")
-		.withNullRepresentation(CategoryService.getCategoryInstance())
-		.bind(Hotel::getCategory,Hotel::setCategory);
+		binder.forField(operatesFrom)
+		.asRequired("Pleas enter a date")
+		.withConverter(localDate -> ((LocalDate)localDate).toEpochDay(),aLong -> (aLong == 0L) ? LocalDate.now().minusDays(1) : LocalDate.ofEpochDay(aLong))
+		.withValidator(aLong -> {return aLong < LocalDate.now().toEpochDay();},"Incorrect date!")
+		.bind(Hotel::getOperatesFrom,Hotel::setOperatesFrom);		
+		binder.forField(category).asRequired("Pleas select a category").withNullRepresentation(CategoryService.getCategoryInstance()).bind(Hotel::getCategory,Hotel::setCategory);
 		binder.forField(url).asRequired("Pleas enter a url").bind(Hotel::getUrl,Hotel::setUrl);
 		binder.forField(description).bind(Hotel::getDescription,Hotel::setDescription);
 		name.setDescription("Hotel name");

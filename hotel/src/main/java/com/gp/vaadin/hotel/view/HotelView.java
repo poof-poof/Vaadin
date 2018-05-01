@@ -100,6 +100,7 @@ public class HotelView extends VerticalLayout implements View {
     		if (hotelGrid.getSelectedItems().size() == 1) {
     			Hotel dellCanditate = hotelGrid.getSelectedItems().iterator().next();
         		hotelService.delete(dellCanditate);
+        		form.setVisible(false);
     		}else {
     			Set<Hotel> dellCanditates = hotelGrid.getSelectedItems();
     			for(Hotel dellCanditate : dellCanditates )

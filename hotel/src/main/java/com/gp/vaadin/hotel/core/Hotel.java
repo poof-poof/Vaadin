@@ -84,12 +84,12 @@ public class Hotel implements Serializable, Cloneable {
 		this.rating = Integer.parseInt(rating);
 	}
 
-	public LocalDate getOperatesFrom() {
-		return (operatesFrom == 0L) ?  LocalDate.now().minusDays(1) : LocalDate.ofEpochDay(operatesFrom);
+	public long getOperatesFrom() {
+		return operatesFrom;
 	}
 
-	public void setOperatesFrom(LocalDate operatesFrom) {
-		this.operatesFrom = operatesFrom.toEpochDay();
+	public void setOperatesFrom(long operatesFrom) {
+		this.operatesFrom = operatesFrom;
 	}
 
 	public Category getCategory() {
@@ -115,13 +115,13 @@ public class Hotel implements Serializable, Cloneable {
 		this.description = description;
 	}
 
-	public Hotel(Long id, String name, String address, String rating, LocalDate operatesFrom, Category category, String url, String description) {
+	public Hotel(Long id, String name, String address, String rating, long operatesFrom, Category category, String url, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.rating = Integer.parseInt(rating);
-		this.operatesFrom = operatesFrom.toEpochDay();
+		this.operatesFrom = operatesFrom;
 		this.category = category;
 		this.url = url;
 		this.description = description;

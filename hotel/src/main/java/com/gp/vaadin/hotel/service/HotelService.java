@@ -176,7 +176,7 @@ public class HotelService {
 				h.setAddress(split[3]);
 				h.setCategory(categoryService.getCatigories().get(r.nextInt(categoryService.getCatigories().size())));
 				int daysOld = 0 - r.nextInt(365 * 30);
-				h.setOperatesFrom((LocalDate.now().plusDays(daysOld)));
+				h.setOperatesFrom((LocalDate.now().plusDays(daysOld)).toEpochDay());
 				h.setDescription("Good description");
 				save(h);
 			}
