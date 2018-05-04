@@ -8,6 +8,7 @@ import com.gp.vaadin.hotel.core.Hotel;
 import com.gp.vaadin.hotel.form.CategoryEditForm;
 import com.gp.vaadin.hotel.service.CategoryService;
 import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Sizeable.Unit;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -95,5 +96,9 @@ public class CategoryView extends VerticalLayout implements View {
 		List<Category> categoryList = categoryService.getCatigories();
 		categoryGrid.setItems(categoryList);
 	}
-
+	
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+	}
 }

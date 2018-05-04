@@ -3,26 +3,50 @@ package com.gp.vaadin.hotel.core;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Link;
 
 @SuppressWarnings("serial")
+@Entity
+@Table(name="HOTEL")
 public class Hotel implements Serializable, Cloneable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long id;
 
+	@Version
+	@Column(name = "OPTLOCK")
+	private int OPT_LOCK;
+	
+	@Column(name = "NAME", nullable = false)
 	private String name = "";
 
+	@Column(name = "ADDRESS", nullable = false)
 	private String address = "";
 
+	@Column(name = "RATING", nullable = false)
 	private Integer rating = 0;
 
+	@Column(name = "OPERATES_FROM", nullable = false)
 	private Long operatesFrom = 0L;
 
+	@Column(name = "CATEGORY", nullable = false)
 	private Category category;
 	
+	@Column(name = "URL", nullable = false)
 	private String url;
 	
+	@Column(name = "DESCRIPTION", nullable = false)
 	private String description = "";
 
 	public boolean isPersisted() {

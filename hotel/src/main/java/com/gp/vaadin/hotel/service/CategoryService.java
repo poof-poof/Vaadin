@@ -3,6 +3,9 @@ package com.gp.vaadin.hotel.service;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,6 +16,7 @@ import com.gp.vaadin.hotel.core.HotelCategory;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 
+@Service
 public class CategoryService {
 	
 	private static CategoryService instance;

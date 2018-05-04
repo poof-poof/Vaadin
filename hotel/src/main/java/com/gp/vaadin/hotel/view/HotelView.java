@@ -7,6 +7,7 @@ import com.gp.vaadin.hotel.core.Hotel;
 import com.gp.vaadin.hotel.form.HotelEditForm;
 import com.gp.vaadin.hotel.service.HotelService;
 import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -116,5 +117,10 @@ public class HotelView extends VerticalLayout implements View {
     public void updateList() {
     	List<Hotel> hotelList = hotelService.findAll(filterName.getValue(),filterAddress.getValue());
     	hotelGrid.setItems(hotelList);
+	}
+	
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
 	}
 }
