@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet author="melamory" id="init">
+		<!-- ================================= Hotels ================================= -->
+		<createTable tableName="HOTEL">
+			<column autoIncrement="true" name="ID" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="OPTLOCK" type="BIGINT" />
+			<column name="NAME" type="VARCHAR(255)" />
+			<column name="ADDRESS" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="RATING" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="OPERATES_FROM" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="CATEGORY" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="URL" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column> 	
+		</createTable>
+		<!-- ================================= Categories ================================= -->
+		<createTable tableName="CATEGORY">
+			<column autoIncrement="true" name="ID" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="OPTLOCK" type="BIGINT" />
+			<column name="NAME" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	
+	<changeSet id="INIT_UPDATE_HOTEL" author="alexey">
+		<addColumn tableName="HOTEL">
+			<column name="DESCRIPTION" type="VARCHAR(500)"></column>
+		</addColumn>
+		<addNotNullConstraint tableName="HOTEL" columnName="NAME" columnDataType="VARCHAR(255)"/>
+		<modifyDataType tableName="HOTEL" columnName="CATEGORY" newDataType="BIGINT"/>
+	</changeSet>
+	
+	<changeSet id="INSERT" author="alexey">
+		<insert tableName="HOTEL">
+			<column name="NAME" value="3 Nagas Luang Prabang - MGallery by Sofitel"/>
+			<column name="ADDRESS" value="Vat Nong Village, Sakkaline Road, Democratic Republic Lao, 06000 Luang Prabang, Laos"/>
+			<column name="RATING" value="4"/>
+			<column name="OPERATES_FROM" value="4342"/>
+			<column name="CATEGORY" value="1"/>
+			<column name="DESCRIPTION" value="Good description"/>
+			<column name="URL" value="https://www.booking.com/hotel/la/3-nagas-luang-prabang-by-accor.en-gb.html"/>
+		</insert>
+		<insert tableName="HOTEL">
+			<column name="NAME" value="Kong Kham Pheng Guesthouse"/>
+			<column name="ADDRESS" value="Mixay Village, Paksan district, Bolikhamxay province, 01000 Muang Pakxan, Laos"/>
+			<column name="RATING" value="1"/>
+			<column name="OPERATES_FROM" value="5434"/>
+			<column name="CATEGORY" value="2"/>
+			<column name="DESCRIPTION" value="Good description"/>
+			<column name="URL" value="https://www.booking.com/hotel/la/kong-kham-pheng-guesthouse.en-gb.html"/>
+		</insert>
+		<insert tableName="CATEGORY">
+			<column name="NAME" value="Hotel" />
+		</insert>
+		<insert tableName="CATEGORY">
+			<column name="NAME" value="Hostel" />
+		</insert>
+		<insert tableName="CATEGORY">
+			<column name="NAME" value="Appartments" />
+		</insert>
+	</changeSet>
+	
+</databaseChangeLog>
