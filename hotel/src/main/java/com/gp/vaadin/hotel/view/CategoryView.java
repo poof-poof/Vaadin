@@ -67,6 +67,7 @@ public class CategoryView extends VerticalLayout implements View {
     			}else {
     				dellCategory.setEnabled(false);
     				editCategory.setEnabled(false);
+    				form.setVisible(false);
     			}
     		}
     	});

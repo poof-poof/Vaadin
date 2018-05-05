@@ -89,6 +89,7 @@ public class HotelView extends VerticalLayout implements View {
     			}else {
         			dellHotel.setEnabled(false);
         			editHotel.setEnabled(false);
+        			form.setVisible(false);
     			}
     		}
     	});
